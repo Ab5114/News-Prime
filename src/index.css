@@ -1,0 +1,338 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+ body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 30px;
+            /* padding-top: 150px; */
+            box-sizing: border-box;
+        }
+        nav{
+          /* position: fixed;
+          z-index: 10;
+          top: 0px; */
+          width: 100%;
+            padding: 15px 0;
+             color: white;
+             background-color: #333;
+             
+        }
+
+        header {
+              
+         padding:0 30px;
+            
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        header ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+                        margin-right: auto;
+                        margin-left: 50px;
+
+        }
+
+       
+        header ul li a {
+                /* display: inline-block; even though inline backg color transition still gets applied to vertical padding */
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding:5px 8px ;
+            transition: background-color 0.3s ease;
+        }
+
+        header ul li a:hover {
+            background-color: #ff6347; /* Tomato color on hover */
+            border-radius: 5px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            /* background-color: #303030; */
+            padding: 5px 10px;
+            border-radius: 5px;
+         }
+
+        .search-bar input {
+            padding: 6px 8px;
+            margin-right: 10px; 
+            border: none;
+            border-radius: 5px;
+            width: 175px;
+        }
+
+        .search-bar button {
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: #e53e3e; /* Darker red on hover */
+        }   
+
+         .popular-searches {
+        margin-top: 15px;  
+        
+        display: flex;
+        align-items: center;
+        gap: 25px; /* Adds space between the buttons */
+        color: white;
+        padding: 10px 30px;  
+        background-color: #363535; /* Slightly lighter background for distinction */
+        border-top: 1px solid #555;  
+     }
+
+    .popular-searches span {
+        font-size: 16px;
+        font-weight: normal;
+        margin-right: 10px;
+    }
+
+    .popular-searches .p-searches {
+        background-color: #555;  
+        text-decoration: none;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 16px;    
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .popular-searches .p-searches:hover {
+        background-color: #ff6347; /* Highlight on hover */
+    }
+
+    .popular-searches .p-searches:active {
+        background-color: #e53e3e; /* Darker color when clicked */
+        transform: scale(0.98); /* Slight scale-down effect for click feedback */
+    }
+
+    /* Container for all cards */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between cards */
+     justify-content: center;
+    padding: 45px;
+    padding-bottom: 15px;
+    background-color: #fefefe; /* Light gray background */
+}
+
+/* Individual card */
+.card {
+    width: 345px; /* Slightly wider for news layout */
+    background-color: #ffffff; /* White card background */
+    border: 1px solid #e0e0e0; /* Light gray border */
+    border-radius: 10px; /* Rounded corners */
+    /* overflow: hidden;  */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation */
+}
+
+/* Hover effect for card */
+.card:hover {
+    transform: translateY(-5px); /* Lift up slightly */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+}
+
+/* Image inside the card */
+.card img {
+    width: 100%; /* Full width */
+    height: 200px;  
+    object-fit: cover;  
+    border-bottom: 1px solid #ddd; /* Separator between image and content */
+}
+.card-content{
+  padding: 10px;
+}
+/* Title of the news */
+.card .title {
+    font-size: 1.4rem; /* Slightly larger font */
+    font-weight: bold;
+    color: #2c3e50; /* Darker color for better readability */
+    /* margin: 15px 10px 5px;    */
+     line-height: 1.2; /* Better readability */
+    text-overflow: ellipsis;  
+    overflow: hidden;  
+    /* white-space: nowrap;   */
+        display: -webkit-box;  
+        margin-bottom: 4px;
+
+     -webkit-line-clamp:2;  
+    -webkit-box-orient: vertical; 
+}
+
+ .card .content {
+    font-size: 1rem; /* Standard readable font size */
+    color: #555; /* Medium text color */
+     line-height: 1.4;
+    overflow: hidden;  
+    text-overflow: ellipsis;  
+    display: -webkit-box;  
+    -webkit-line-clamp: 3;  
+    -webkit-box-orient: vertical;  
+}
+/* Read More button */
+ .card .rdmore {
+    margin: auto 0 10px 10px;
+    padding: 8px 12px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    text-align: center;
+    color: #ffffff;  
+    background-color: #333; 
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;  
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+}
+
+.card .rdmore:hover {
+    background-color: #ff6347;  
+    transform: scale(1.05);  
+}
+
+ .card-container .card:last-child {
+    margin-bottom: 20px;
+}
+
+
+
+.language-selector {
+  margin-left: auto;
+}
+
+.language-dropdown {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.publisher-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+  gap: 5px;
+}
+
+ 
+
+/* Publisher icon styles */
+.card .publisher-icon {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  object-fit: contain;
+  border: 2px solid #ddd;
+  /* margin-right: 10px;   */
+}
+
+/* Publisher name styles */
+.card .publisher-name {
+  font-size: 12px;
+  color: #333;
+  /* margin-right: 5px;  */
+}
+
+/* Published time styles */
+.published-time {
+  font-size: 12px;
+  font-weight: light;
+}
+
+/* Separator style (optional) */
+.card .separator {
+ font-size:12px;
+    color: #777; /* Customize the separator color */
+}
+.navigate{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 25px;
+    box-sizing: border-box;
+}
+
+.navigate button{
+     padding: 8px 12px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    color: #ffffff;  
+    background-color: #333; 
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;  
+    display: inline-block;
+    transition: box-shadow 0.3s ease, transform 0.2s ease; 
+
+   &:hover {
+    box-shadow: 0px -2px 16px rgba(0, 0, 0, 0.2); /* Larger shadow on hover */
+    transform: scale(1.02); /* Slight scaling effect */
+}
+
+/* Active state with even more intense box-shadow */
+&:active {
+    box-shadow: 0px -2px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow when active */
+}
+}
+
+ .card-container:empty::before {
+    content: "Page Not Found";
+    display: block;
+    text-align: center;
+    font-size: 30px;
+    color: orange;
+}
+
+ .card-container:empty {
+    background-color: #f4f4f9;
+}
