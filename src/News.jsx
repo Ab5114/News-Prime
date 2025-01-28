@@ -3,11 +3,10 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
+import axios from "axios";
  
 export default function News() {
-  const API_KEY = process.env.REACT_APP_API_KEY;
-  console.log(API_KEY);
-  const pageSize = 20;
+   const pageSize = 20;
   const [newsData, setNewsData] = useState(null);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("general");
@@ -25,20 +24,17 @@ export default function News() {
           controller.abort(); // Abort fetch after 10 seconds
         }, 5000);
 
-        const response = await fetch(
-          `https://newsapi.org/v2/everything?q=${search}&apiKey=${API_KEY}&pageSize=${pageSize}&page=${page}`,
+        const response = await axios.get(
+          `http://localhost:5015/api/news?search=${search}&pageSize=${pageSize}&page=${page}`,
           { signal: controller.signal }
         );
 
-        const data = await response.json();
-        clearTimeout(timeout);
-        if (!response.ok) {
-          throw new Error("Failed to fetch data.");
-        }
-        setNewsData(data.articles);
-        setTotalResults(data.totalResults);
-        console.log(data);
-      } catch (error) {
+         clearTimeout(timeout);
+        
+         setNewsData(response.data.articles);
+        setTotalResults(response.data.totalResults);
+        console.log(response.data);
+       } catch (error) {
         if (error.name === "AbortError") {
           console.error("Request timed out.");
         } else {
