@@ -14,6 +14,13 @@ export default function News() {
   const [loading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
 
+
+ const baseURL =
+   process.env.NODE_ENV === "production"
+     ? ""  
+     : "http://localhost:5015";
+     
+
   const getData = async () => {
     if (search) {
       try {
@@ -25,7 +32,7 @@ export default function News() {
         }, 5000);
 
         const response = await axios.get(
-          `http://localhost:5015/api/news?search=${search}&pageSize=${pageSize}&page=${page}`,
+          `${baseURL}/api/news?search=${search}&pageSize=${pageSize}&page=${page}`,
           { signal: controller.signal }
         );
 
@@ -86,7 +93,7 @@ export default function News() {
             </li>
           </ul>
 
-          <div class="search-bar">
+          <div className="search-bar">
             <input type="text" id="searchInput" />
             <button
               onClick={() => setSearch(document.querySelector("input").value)}
@@ -96,80 +103,80 @@ export default function News() {
           </div>
         </header>
 
-        <div class="popular-searches">
+        <div className="popular-searches">
           <span>Popular Searches</span>
           <Link
-            class="p-searches"
+            className="p-searches"
             to="/technology"
             onClick={() => setSearch("Technology")}
           >
             Technology
           </Link>
           <Link
-            class="p-searches"
+            className="p-searches"
             to="/health"
             onClick={() => setSearch("Health")}
           >
             Health
           </Link>
           <Link
-            class="p-searches"
+            className="p-searches"
             to="/medical"
             onClick={() => setSearch("Medical")}
           >
             Medical
           </Link>
           <Link
-            class="p-searches"
+            className="p-searches"
             to="/finance"
             onClick={() => setSearch("Finance")}
           >
             Finance
           </Link>
           <Link
-            class="p-searches"
+            className="p-searches"
             to="/cricket"
             onClick={() => setSearch("Cricket")}
           >
             Cricket
           </Link>
           <Link
-            class="p-searches"
+            className="p-searches"
             to="/entertainment"
             onClick={() => setSearch("Entertainment")}
           >
             Entertainment
           </Link>
           <Link
-            class="p-searches"
+            className="p-searches"
             to="/business"
             onClick={() => setSearch("Business")}
           >
             Business
           </Link>
           <Link
-            class="p-searches"
+            className="p-searches"
             to="/Sports"
             onClick={() => setSearch("Sports")}
           >
             Sports{" "}
           </Link>
           <Link
-            class="p-searches"
+            className="p-searches"
             to="/Science"
             onClick={() => setSearch("Science")}
           >
             Science
           </Link>
           <Link
-            class="p-searches"
+            className="p-searches"
             to="/Education"
             onClick={() => setSearch("Education")}
           >
             Science
           </Link>
           <Link
-            class="p-searches"
+            className="p-searches"
             to="/Travel"
             onClick={() => setSearch("Travel")}
           >
@@ -191,12 +198,12 @@ export default function News() {
         </div>
       )}
       {!loading && !hasError && <Card data={newsData} />}
-      <div class=" navigate">
+      <div className=" navigate">
         <button className="prev" onClick={handlePrev} disabled={page === 1}>
           &larr; Previous{" "}
         </button>
         <button
-          class="next"
+          className="next"
           onClick={handleNext}
           disabled={
             newsData === null || page + 1 > Math.ceil(totalResults) / pageSize
