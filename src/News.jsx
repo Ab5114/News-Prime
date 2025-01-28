@@ -13,10 +13,10 @@ export default function News() {
   const [totalResults, setTotalResults] = useState(0);
   const [loading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
-const apiUrl =
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:5015/api/news"
-    : "/api/news";
+  const apiUrl =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:5015/api/news"
+      : "/api/news";
 
   const getData = async () => {
     if (search) {
@@ -25,14 +25,13 @@ const apiUrl =
         setHasError(false);
         const controller = new AbortController();
         const timeout = setTimeout(() => {
-          controller.abort(); // Abort fetch after 10 seconds
+          controller.abort();
         }, 10000);
 
         const response = await axios.get(
           `${apiUrl}?search=${search}&pageSize=${pageSize}&page=${page}`,
           { signal: controller.signal }
         );
-
 
         clearTimeout(timeout);
 
