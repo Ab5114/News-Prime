@@ -4,22 +4,15 @@ import Card from "./Card";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
 import axios from "axios";
- 
+
 export default function News() {
-   const pageSize = 20;
+  const pageSize = 20;
   const [newsData, setNewsData] = useState(null);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("general");
   const [totalResults, setTotalResults] = useState(0);
   const [loading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
-
-
- const baseURL =
-   process.env.NODE_ENV === "production"
-     ? ""  
-     : "http://localhost:5015";
-     
 
   const getData = async () => {
     if (search) {
@@ -32,16 +25,16 @@ export default function News() {
         }, 5000);
 
         const response = await axios.get(
-          `${baseURL}/api/news?search=${search}&pageSize=${pageSize}&page=${page}`,
+          `http://localhost:5015/api/news?search=${search}&pageSize=${pageSize}&page=${page}`,
           { signal: controller.signal }
         );
 
-         clearTimeout(timeout);
-        
-         setNewsData(response.data.articles);
+        clearTimeout(timeout);
+
+        setNewsData(response.data.articles);
         setTotalResults(response.data.totalResults);
         console.log(response.data);
-       } catch (error) {
+      } catch (error) {
         if (error.name === "AbortError") {
           console.error("Request timed out.");
         } else {
