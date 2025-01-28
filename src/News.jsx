@@ -13,6 +13,10 @@ export default function News() {
   const [totalResults, setTotalResults] = useState(0);
   const [loading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
+const apiUrl =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:5015/api/news"
+    : "/api/news";
 
   const getData = async () => {
     if (search) {
@@ -25,9 +29,10 @@ export default function News() {
         }, 10000);
 
         const response = await axios.get(
-          `http://localhost:5015/api/news?search=${search}&pageSize=${pageSize}&page=${page}`,
+          `${apiUrl}?search=${search}&pageSize=${pageSize}&page=${page}`,
           { signal: controller.signal }
         );
+
 
         clearTimeout(timeout);
 
