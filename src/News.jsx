@@ -13,11 +13,11 @@ export default function News() {
   const [totalResults, setTotalResults] = useState(0);
   const [loading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const apiUrl =
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:5015/api/news"
-      : "/api/news";
-
+  // const apiUrl =
+  //   process.env.NODE_ENV === "development"
+  //     ? "http://localhost:5015/api/news"
+  //     : "https://news-prime-services-production.up.railway.app/api/news";
+      const apiUrl = "https://news-prime-services-production.up.railway.app";
   const getData = async () => {
     if (search) {
       try {
@@ -29,7 +29,7 @@ export default function News() {
         }, 10000);
 
         const response = await axios.get(
-          `${apiUrl}?search=${search}&pageSize=${pageSize}&page=${page}`,
+          `${apiUrl}/api/news?search=${search}&pageSize=${pageSize}&page=${page}`,
           { signal: controller.signal }
         );
 
